@@ -12,8 +12,9 @@ a {
   color: firebrick;
 }
 
+
 header {
-  padding: 8px;
+  padding: 9px;
   background-color: wheat;
   display: flex;
   justify-content: space-between;

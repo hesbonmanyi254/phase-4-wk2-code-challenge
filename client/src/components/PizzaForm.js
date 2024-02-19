@@ -12,6 +12,8 @@ function PizzaForm({ restaurantId, onAddPizza }) {
       .then(setPizzas);
   }, []);
 
+
+
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
@@ -32,10 +34,12 @@ function PizzaForm({ restaurantId, onAddPizza }) {
           setFormErrors([]);
         });
       } else {
-        r.json().then((err) => setFormErrors(err.errors));
+        return r.json().then((err) => setFormErrors([err.errors]));
       }
     });
   }
+
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -60,9 +64,9 @@ function PizzaForm({ restaurantId, onAddPizza }) {
         onChange={(e) => setPrice(e.target.value)}
       />
       {formErrors.length > 0
-        ? formErrors.map((err) => (
+        ? formErrors.map((err, index) => (
             <p key={err} style={{ color: "red" }}>
-              {err}
+              {err.price ? err.price : err.toString()}
             </p>
           ))
         : null}

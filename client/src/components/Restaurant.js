@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PizzaForm from "./PizzaForm";
 
-function Home() {
+function Restaurant() {
   const [{ data: restaurant, error, status }, setRestaurant] = useState({
     data: null,
     error: null,
@@ -25,14 +25,14 @@ function Home() {
   }, [id]);
 
   function handleAddPizza(newPizza) {
-    setRestaurant({
+    setRestaurant(prevState => ({
       data: {
-        ...restaurant,
-        pizzas: [...restaurant.pizzas, newPizza],
+        ...prevState.data,
+        pizzas: prevState.data.pizzas ? [...prevState.data.pizzas, newPizza] : [newPizza],
       },
       error: null,
       status: "resolved",
-    });
+    }));
   }
 
   if (status === "pending") return <h1>Loading...</h1>;
@@ -44,23 +44,26 @@ function Home() {
         <h1>{restaurant.name}</h1>
         <p>{restaurant.address}</p>
       </div>
-      <div className="card">
-        <h2>Pizza Menu</h2>
-        {restaurant.pizzas.map((pizza) => (
-          <div key={pizza.id}>
-            <h3>{pizza.name}</h3>
-            <p>
-              <em>{pizza.ingredients}</em>
-            </p>
-          </div>
-        ))}
-      </div>
+      {restaurant.pizzas && (
+        <div className="card">
+          <h2>Pizza Menu</h2>
+          {restaurant.pizzas.map((pizza) => (
+            <div key={pizza.id}>
+              <h3>{pizza.name}</h3>
+              <p>
+                <em>{pizza.ingredients}</em>
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="card">
         <h3>Add New Pizza</h3>
         <PizzaForm restaurantId={restaurant.id} onAddPizza={handleAddPizza} />
       </div>
     </section>
   );
+
 }
 
-export default Home;
+export default Restaurant;
