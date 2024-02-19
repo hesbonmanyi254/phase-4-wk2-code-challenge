@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://phase-4-week-2-codechallange.onrender.com",
+  "proxy": "https://65d2cb6fa5c298c7ab7c0a60--pizzas-in.netlify.app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
