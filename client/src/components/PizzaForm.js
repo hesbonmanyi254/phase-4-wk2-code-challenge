@@ -4,7 +4,7 @@ function PizzaForm({ restaurantId, onAddPizza }) {
   const [pizzas, setPizzas] = useState([]);
   const [pizzaId, setPizzaId] = useState("");
   const [price, setPrice] = useState("");
-  const [formErrors, setFormErrors] = useState([]);
+  const [formErrors, setFormErrors] = useState ([]);
 
   useEffect(() => {
     fetch("/pizzas")
