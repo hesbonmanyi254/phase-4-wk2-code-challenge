@@ -14,7 +14,7 @@ def create_app():
     db.init_app(app)
     migrate = Migrate(app, db)
 
-    CORS(app, origins="https://65d201dba5c29853147c0a68--phase-4-week-2-code-chllnge.netlify.app/")
+    CORS(app)
     
     class ValidationError(Exception):
         def __init__(self, errors):

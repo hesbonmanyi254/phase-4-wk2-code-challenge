@@ -9,6 +9,10 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 pytest = "*"
 faker = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+sqlalchemy-serializer = "*"
+flask-restful = "*"
 
 [requires]
 python_version = "3.8.13"
