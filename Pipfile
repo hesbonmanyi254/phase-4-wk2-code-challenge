@@ -13,6 +13,7 @@ gunicorn = "*"
 psycopg2-binary = "*"
 sqlalchemy-serializer = "*"
 flask-restful = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.8.13"
