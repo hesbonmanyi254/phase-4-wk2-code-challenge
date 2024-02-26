@@ -5,7 +5,7 @@ function Home() {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
-    fetch("/restaurants")
+    fetch("https://phase-4-wk2-code-challenge.onrender.com/restaurants")
       .then((r) => {
         if (!r.ok) {
           throw new Error('Network response was not ok');
@@ -22,7 +22,7 @@ function Home() {
   
 
   function handleDelete(id) {
-    fetch(`/restaurants/${id}`, {
+    fetch(`https://phase-4-wk2-code-challenge.onrender.com/restaurants/${id}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
