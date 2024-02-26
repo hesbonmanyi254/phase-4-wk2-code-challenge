@@ -1,5 +1,5 @@
-from app import app, db
-from models import Restaurant, Pizza, RestaurantPizza
+from run import app
+from models import Restaurant, Pizza, RestaurantPizza, db
 
 def seed_data():
     with app.app_context():

@@ -40,7 +40,6 @@ function PizzaForm({ restaurantId, onAddPizza }) {
   }
 
 
-
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="pizza_id">Pizza:</label>
@@ -52,7 +51,16 @@ function PizzaForm({ restaurantId, onAddPizza }) {
       >
         <option value="">Select a pizza</option>
         {pizzas.map((pizza) => (
-          <option key={pizza.id} value={pizza.id}>
+          <option key={pizza.i￼#1Morgan-Ngetich
+            14 commits    11,224 ++    30,455 --
+            November
+            February
+            May
+            August
+            November
+            February
+            5
+            d} value={pizza.id}>
             {pizza.name}
           </option>
         ))}
