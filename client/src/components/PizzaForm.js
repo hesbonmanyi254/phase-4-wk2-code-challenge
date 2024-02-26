@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function PizzaForm({ restaurantId, onAddPizza }) {
   const [pizzas, setPizzas] = useState([]);
   const [pizzaId, setPizzaId] = useState("");
   const [price, setPrice] = useState("");
-  const [formErrors, setFormErrors] = useState ([]);
+  const [formErrors, setFormErrors] = useState([]);
 
   useEffect(() => {
     fetch("/pizzas")
       .then((r) => r.json())
       .then(setPizzas);
   }, []);
-
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +19,7 @@ function PizzaForm({ restaurantId, onAddPizza }) {
       restaurant_id: restaurantId,
       price: parseInt(price),
     };
-    fetch("/restaurant_pizzas", {
+    fetch("https://phase-4-wk2-code-challenge.onrender.com/restaurant_pizzas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,11 +32,10 @@ function PizzaForm({ restaurantId, onAddPizza }) {
           setFormErrors([]);
         });
       } else {
-        return r.json().then((err) => setFormErrors([err.errors]));
+        return r.json().then((err) => setFormErrors(err.errors));
       }
     });
   }
-
 
   return (
     <form onSubmit={handleSubmit}>
@@ -51,33 +48,25 @@ function PizzaForm({ restaurantId, onAddPizza }) {
       >
         <option value="">Select a pizza</option>
         {pizzas.map((pizza) => (
-          <option key={pizza.i￼#1Morgan-Ngetich
-            14 commits    11,224 ++    30,455 --
-            November
-            February
-            May
-            August
-            November
-            February
-            5
-            d} value={pizza.id}>
+          <option key={pizza.id} value={pizza.id}>
             {pizza.name}
           </option>
         ))}
       </select>
-      <label htmlFor="pizza_id">Price:</label>
+      <label htmlFor="price">Price:</label>
       <input
         type="number"
+        id="price"
+        name="price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      {formErrors.length > 0
-        ? formErrors.map((err, index) => (
-            <p key={err} style={{ color: "red" }}>
-              {err.price ? err.price : err.toString()}
-            </p>
-          ))
-        : null}
+      {formErrors.length > 0 &&
+        formErrors.map((err, index) => (
+          <p key={index} style={{ color: "red" }}>
+            {err.price ? err.price : err.toString()}
+          </p>
+        ))}
       <button type="submit">Add To Restaurant</button>
     </form>
   );

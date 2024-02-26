@@ -12,7 +12,6 @@ def create_app():
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    CORS(app, resources={r"/*": {"origins": "https://pizzas-in.netlify.app", "methods": ["GET", "POST", "DELETE"], "allow_headers": ["Content-Type"]}})
 
     db.init_app(app)
     migrate = Migrate(app, db)
