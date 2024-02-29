@@ -19,7 +19,7 @@ function PizzaForm({ restaurantId, onAddPizza }) {
       restaurant_id: restaurantId,
       price: parseInt(price),
     };
-    fetch("https://phase-4-wk2-code-challenge.onrender.com/restaurant_pizzas", {
+    fetch("/restaurant_pizzas", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

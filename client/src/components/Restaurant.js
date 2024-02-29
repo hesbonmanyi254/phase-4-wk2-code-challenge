@@ -11,7 +11,7 @@ function Restaurant() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://phase-4-wk2-code-challenge.onrender.com/restaurants/${id}`).then((r) => {
+    fetch(`/restaurants/${id}`).then((r) => {
       if (r.ok) {
         r.json().then((restaurant) =>
           setRestaurant({ data: restaurant, error: null, status: "resolved" })
